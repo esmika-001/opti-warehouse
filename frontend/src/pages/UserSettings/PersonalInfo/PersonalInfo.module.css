@@ -1,0 +1,155 @@
+.root {
+    height: 100% !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    overflow-y: auto !important;
+    /* padding: 30px  !important; */
+
+}
+
+.root::-webkit-scrollbar {
+    width: 0px !important;
+}
+
+.title {
+    padding: 21px 0 14px 0 !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    line-height: 22px !important;
+
+}
+
+.profileWrap {
+    padding: 20px 0 !important;
+}
+
+.ptofileTitle {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 22px !important;
+
+}
+
+.profile {
+    padding: 11px 0 0 0 !important;
+    display: flex;
+
+}
+
+.avatar {
+    height: 80px !important;
+    width: 80px !important;
+}
+
+.profileTextWrap {
+    min-width: 84px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin-left: 13px !important;
+    justify-content: space-between !important;
+}
+
+.name {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 22px !important;
+}
+
+.oth {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 19px !important;
+}
+
+.btns {
+    margin-left: 15px !important;
+    margin-top: auto !important;
+    margin-left: 28px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+}
+
+.btn1 {
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 16.96px !important;
+    text-align: center !important;
+    color: white !important;
+    background-color: rgba(79, 128, 225, 1) !important;
+    width: 98px !important;
+    height: 37px !important;
+}
+
+.btn2 {
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 16.96px !important;
+    text-align: center !important;
+    color: rgba(79, 128, 225, 1) !important;
+    background-color: white !important;
+    width: 98px !important;
+    height: 37px !important;
+    border: 1.54px solid rgba(79, 128, 225, 1) !important;
+}
+
+.form {
+    height: min-content !important;
+    width: 100% !important;
+    padding: 20px 0 0 0 !important;
+    /* overflow-y: auto; */
+}
+
+.inputBox {
+    border: 1px solid rgba(0, 0, 0, 0.253) !important;
+    border-radius: 8px !important;
+
+    & input {
+        padding: 16px 20px !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        line-height: 24px !important;
+    }
+
+    & div {
+        padding-left: 20px !important;
+    }
+
+    & fieldset {
+        border: none !important;
+    }
+}
+
+.inputBoxDate {
+    border: 1px solid rgba(0, 0, 0, 0.253) !important;
+    border-radius: 8px !important;
+
+    & input {
+        padding: 16px 20px !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        line-height: 24px !important;
+    }
+
+    /* & div {
+        padding-left: 20px !important;
+    } */
+
+    & fieldset {
+        border: none !important;
+    }
+}
+
+.inputWraper {
+    padding: 0 0 24px 0 !important;
+}
+
+.formLabel {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 22px !important;
+    color: black !important;
+    margin-bottom: 8px !important;
+}

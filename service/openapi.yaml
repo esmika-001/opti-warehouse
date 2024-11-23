@@ -1,0 +1,1122 @@
+openapi: 3.0.0
+info:
+  title: linked_clone_api
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: backend server
+
+paths:
+  /posts:
+    get:
+      tags:
+        - posts
+      summary: Get all posts
+      parameters:
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                    title:
+                      type: string
+                    content:
+                      type: string
+                    user_id:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        username:
+                          type: string
+                        image:
+                          type: string
+                    time_stamp:
+                      type: string
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    post:
+      tags:
+        - posts
+      summary: Create a new posts
+      parameters:
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+                link:
+                  type: string
+      responses:
+        "201":
+          description: posts created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/posts"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    put:
+      tags:
+        - "posts"
+      summary: Update a posts by ID
+      parameters:
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+                link:
+                  type: string
+                _id:
+                  type: string
+      responses:
+        "200":
+          description: posts updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/posts"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    delete:
+      tags:
+        - "posts"
+      summary: Delete a posts by ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+      responses:
+        "204":
+          description: posts deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /posts/next/${time}:
+    get:
+      tags:
+        - posts
+      summary: Get next posts
+      parameters:
+        - name: time
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                    title:
+                      type: string
+                    content:
+                      type: string
+                    user_id:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        username:
+                          type: string
+                        image:
+                          type: string
+                    time_stamp:
+                      type: string
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid request / Data missing"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /auth/login:
+    post:
+      tags:
+        - "auth"
+      summary: Authenticate user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: User authenticated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  user:
+                    type: object
+                    properties:
+                      _id:
+                        type: string
+                      username:
+                        type: string
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      image:
+                        type: string
+                      headline:
+                        type: string
+                      summary:
+                        type: string
+                      email:
+                        type: string
+                      # time_stamp:
+                      #   type: string
+                      education:
+                        type: array
+                        items:
+                          type: object
+                        properties:
+                          school:
+                            type: string
+                          degree:
+                            type: string
+                          field_of_study:
+                            type: string
+                          start_date:
+                            type: string
+                          end_date:
+                            type: string
+                          description:
+                            type: string
+                      skill:
+                        type: array
+                        items:
+                          type: object
+                        properties:
+                          skill:
+                            type: string
+                          time_stamp:
+                            type: string
+                      experience:
+                        type: array
+                        items:
+                          type: object
+                        properties:
+                          title:
+                            type: string
+                          company:
+                            type: string
+                          start_date:
+                            type: string
+                          end_date:
+                            type: string
+                          description:
+                            type: string
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid username or password"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid request / Data missing"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error"
+  /auth/register:
+    post:
+      tags:
+        - "auth"
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                # first_name:
+                #   type: string
+                # last_name:
+                #   type: string
+                password:
+                  type: string
+      responses:
+        "201":
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                type: boolean
+                example: true
+                # properties:
+                #   _id:
+                #     type: string
+                #   username:
+                #     type: string
+                #   first_name:
+                #     type: string
+                #   last_name:
+                #     type: string
+                #   image:
+                #     type: string
+                #   headline:
+                #     type: string
+                #   summary:
+                #     type: string
+                #   email:
+                #     type: string
+                  # time_stamp:
+                  #   type: string
+                  # education:
+                  #   type: array
+                  #   items:
+                  #     type: object
+                  #   properties:
+                  #     school:
+                  #       type: string
+                  #     degree:
+                  #       type: string
+                  #     field_of_study:
+                  #       type: string
+                  #     start_date:
+                  #       type: string
+                  #     end_date:
+                  #       type: string
+                  #     description:
+                  #       type: string
+                  # skill:
+                  #   type: array
+                  #   items:
+                  #     type: object
+                  #   properties:
+                  #     skill:
+                  #       type: string
+                  #     time_stamp:
+                  #       type: string
+                  # experience:
+                  #   type: array
+                  #   items:
+                  #     type: object
+                  #   properties:
+                  #     title:
+                  #       type: string
+                  #     company:
+                  #       type: string
+                  #     start_date:
+                  #       type: string
+                  #     end_date:
+                  #       type: string
+                  #     description:
+                  #       type: string
+
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid request / Data missing"
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Username already exists"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error"
+  /comments/${post_id}:
+    get:
+      tags:
+        - comments
+      summary: Get all comments for a post
+      parameters:
+        - name: post_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                    user_id:
+                      type: string
+                    post_id:
+                      type: string
+                    content:
+                      type: string
+                    time_stamp:
+                      type: string
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    post:
+      tags:
+        - comments
+      summary: Create a new comment
+      parameters:
+        - name: post_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                  example: "This is a comment"
+      responses:
+        "201":
+          description: Comment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/comments"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid request / Data missing"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /comments/${comment_id}:
+    put:
+      tags:
+        - "comments"
+      summary: Update a comments/sub-comment by ID
+      parameters:
+        - name: comment_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                  example: "This is a comments/sub-comment"
+      responses:
+        "200":
+          description: comments/sub-comment updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: boolean
+                    example: true
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid request / Data missing"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    delete:
+      tags:
+        - "comments"
+      summary: Delete a comments/sub-comment by ID
+      parameters:
+        - name: comment_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: comments/sub-comment deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /comments/sub-comment/${comment_id}:
+    get:
+      tags:
+        - comments
+      summary: Get all sub-comments for a comment
+      parameters:
+        - name: comment_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                    user_id:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        username:
+                          type: string
+                        image:
+                          type: string
+                    post_id:
+                      type: string
+                    comment_id:
+                      type: string
+                    content:
+                      type: string
+                    time_stamp:
+                      type: string
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    post:
+      tags:
+        - comments
+      summary: Create a new Sub-comment
+      parameters:
+        - name: comment_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                  example: "This is a sub-comment"
+      responses:
+        "201":
+          description: Sub-comment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/comments"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid request / Data missing"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /reactions/posts/${post_id}:
+    get:
+      tags:
+        - reactions
+      summary: Get all reactions for a post
+      parameters:
+        - name: post_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                    user_id:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        username:
+                          type: string
+                        image:
+                          type: string
+                    post_id:
+                      type: string
+                    reaction:
+                      type: string
+                      enum:
+                        - like
+                        - love
+                        - haha
+                        - wow
+                        - sad
+                        - angry
+                    time_stamp:
+                      type: string
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    post:
+      tags:
+        - reactions
+      summary: Create/update/remove a new reaction
+      parameters:
+        - name: post_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reaction:
+                  type: string
+                  enum:
+                    - like
+                    - love
+                    - haha
+                    - wow
+                    - sad
+                    - angry
+      responses:
+        "201":
+          description: Reaction created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: string
+                    example: "Reaction created"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid request / Data missing"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /reactions/comment/${comment_id}:
+    get:
+      tags:
+        - reactions
+      summary: Get all reactions for a comment
+      parameters:
+        - name: comment_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                    user_id:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        username:
+                          type: string
+                        image:
+                          type: string
+                    comment_id:
+                      type: string
+                    reaction:
+                      type: string
+                      enum:
+                        - like
+                        - love
+                        - haha
+                        - wow
+                        - sad
+                        - angry
+                    time_stamp:
+                      type: string
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    post:
+      tags:
+        - reactions
+      summary: Create/update/remove a new reaction
+      parameters:
+        - name: post_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reaction:
+                  type: string
+                  enum:
+                    - like
+                    - love
+                    - haha
+                    - wow
+                    - sad
+                    - angry
+      responses:
+        "201":
+          description: Reaction created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: string
+                    example: "Reaction created"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid request / Data missing"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+
+components:
+  schemas:
+    
+    user:
+      type: object
+      properties:
+        _id:
+          type: string
+        username:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        image:
+          type: string
+        headline:
+          type: string
+        summary:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+        education:
+          type: array
+          items:
+            type: object
+          properties:
+            school:
+              type: string
+            degree:
+              type: string
+            field_of_study:
+              type: string
+            start_date:
+              type: string
+            end_date:
+              type: string
+            description:
+              type: string
+        skill:
+          type: array
+          items:
+            type: object
+          properties:
+            skill:
+              type: string
+            time_stamp:
+              type: string
+        experience:
+          type: array
+          items:
+            type: object
+          properties:
+            title:
+              type: string
+            company:
+              type: string
+            start_date:
+              type: string
+            end_date:
+              type: string
+            description:
+              type: string
+    reactions:
+      type: object
+      properties:
+        _id:
+          type: string
+        user_id:
+          type: string
+        post_id:
+          type: string
+        comment_id:
+          type: string
+        reaction:
+          type: string
+          enum:
+            - like
+            - love
+            - haha
+            - wow
+            - sad
+            - angry
+        time_stamp:
+          type: string
+    comments:
+      type: object
+      properties:
+        _id:
+          type: string
+        user_id:
+          type: string
+        post_id:
+          type: string
+        comment_id:
+          type: string
+        content:
+          type: string
+        time_stamp:
+          type: string
+    connections:
+      type: object
+      properties:
+        _id:
+          type: string
+        user_id:
+          type: array
+          items:
+            type: string
+        time_stamp:
+          type: string
+    posts:
+      type: object
+      properties:
+        _id:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        user_id:
+          type: string
+        link:
+          type: string
+        time_stamp:
+          type: string

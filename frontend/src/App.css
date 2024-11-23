@@ -1,0 +1,134 @@
+*{
+ font-family: poppins, sans-serif !important;
+}
+.App {
+  text-align: center;
+}
+
+.MuiMenu-paper {
+  box-shadow: unset !important;
+  border: 1px solid rgba(140, 140, 140, 0.2);
+  border-radius: 12px !important;
+}
+
+.MuiSelect-select {
+  padding-left: 0 !important;
+}
+
+.MuiMenu-list>li {}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.saveBtn {
+  background-color: #4f80e1 !important;
+  color: white !important;
+  margin-right: 10px !important;
+  border: unset !important;
+}
+
+.headingBtn {
+  border-radius: 12px !important;
+  font-size: 14px !important;
+  text-transform: unset !important;
+  font-weight: 500 !important;
+  height: 48px !important;
+  min-width: 128px !important;
+  padding: 8px 16px !important;
+}
+
+.MuiMenu-paper {
+  max-height: 300px !important;
+}
+
+.MuiStepConnector-vertical>span {
+  height: 100% !important;
+}
+
+*::placeholder {
+  font-size: 12px !important;
+  color: #424242 !important;
+}
+
+input {
+  font-size: 14px !important;
+  color: #424242 !important;
+}
+
+.ant-picker-cell-inner {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+*::-webkit-scrollbar {
+  width: 0px !important;
+  scrollbar-width: thin !important;
+  background-color: #c5c5c5 !important;
+  margin-left: 4px !important;
+}
+
+tr {
+  height: 40px !important;
+}
+
+tr>* {
+  padding: 2px 12px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  text-overflow: ellipsis !important;
+  text-wrap: nowrap !important;
+}
+
+svg {
+  font-size: 20px !important;
+}
+
+.MuiRadio-root {
+  padding: 0 10px !important;
+}
+.ant-picker-cell-inner{
+  display: flex !important;
+  flex-direction: column !important;
+}
+.MuiInputLabel-root{
+  font-size: 14px !important;
+}
+.css-14lo706{
+  font-size: 10px !important;
+}
+.MuiMenu-list>li{
+  font-size: 14px !important;
+}

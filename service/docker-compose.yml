@@ -1,0 +1,64 @@
+services:
+  # Backend service
+  opti-warehouse-backend:
+    container_name: opti-warehouse-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dependency-base
+    ports:
+      - ${APP_FORWARD_PORT:-8080}:${APP_PORT:-8080}
+    volumes:
+      - .:/app
+    networks:
+      - opti_warehouse_network
+    restart: on-failure
+    tty: true
+    stdin_open: true
+    expose:
+      - ${APP_PORT:-8080}
+    environment:
+      - NODE_OPTIONS=--max_old_space_size=3072
+  
+  # postgres DB service
+  database:
+    image: postgres:17-alpine3.20
+    container_name: opti-warehouse-database
+    restart: always
+    ports:
+      - ${DB_FORWARD_PORT:-5432}:5432
+    environment:
+      - POSTGRES_USER=${DB_USER:-"postgres"}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-"admin@123"}
+      - POSTGRES_DB=${DB_DATABASE:-"opti-warehouse-database"}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - opti_warehouse_network
+  
+  #pgAdmin
+  pgadmin:
+    image: 'dpage/pgadmin4:8.13.0'
+    container_name: opti-warehouse-pgadmin
+    restart: always
+    ports:
+      - ${PGADMIN_FORWARD_PORT:-8888}:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-user@gmail.com}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-admin@123}
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - opti_warehouse_network
+
+networks:
+  opti_warehouse_network:
+    name: opti_warehouse_shared_network
+    external: true
+
+volumes:
+  pg_data: {}
+  pgadmin_data: {}
+
+
+#docker network create opti_warehouse_shared_network

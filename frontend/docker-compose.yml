@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  optiwarehouse:
+    container_name: opti-warehouse-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    restart: always
+    networks:
+      - opti_warehouse_network
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+networks:
+  opti_warehouse_network:
+    external: true

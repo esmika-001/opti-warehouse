@@ -1,0 +1,12 @@
+.mainCustomModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 24;
+    background-color: white;
+    border-radius: 16px;
+    min-width: 350px;
+    max-width: 600px;
+    max-height: 600px; 
+}

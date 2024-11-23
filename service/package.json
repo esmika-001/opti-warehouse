@@ -1,0 +1,49 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js",
+    "start": "nodemon main.js",
+    "dev": "nodemon main.js",
+    "db:create": "cross-env npx sequelize-cli db:create",
+    "db:drop": "cross-env npx sequelize-cli db:drop",
+    "up": "cross-env npx sequelize-cli db:migrate",
+    "undo": "cross-env npx sequelize-cli db:migrate:undo",
+    "undo:all": "cross-env npx sequelize-cli db:migrate:undo:all",
+    "seed": "cross-env npx sequelize-cli db:seed:all",
+    "seed:undo": "cross-env npx sequelize-cli db:seed:undo",
+    "seed:undo:all": "cross-env npx sequelize-cli db:seed:undo:all",
+    "cleanStart": "npm i && npm run db:drop && npm run db:create && npm run up && npm run seed && npm run dev",
+    "dispatch-messages": "node message-bus/cli-commands/dispatch-messages.js",
+    "handle-messages": "node message-bus/cli-commands/handle-messages.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.4",
+    "awilix": "^12.0.3",
+    "axios-client": "^0.0.9",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.2",
+    "express": "^4.18.2",
+    "express-http-proxy": "^2.1.1",
+    "jsonrepair": "^3.10.0",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.15",
+    "nodemon": "^3.0.3",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3",
+    "socket.io": "^4.7.4",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.2"
+  }
+}

@@ -1,0 +1,11 @@
+.MuiButtonBase-root {
+    min-height: unset !important;
+}
+
+.MuiAccordionSummary-content.Mui-expanded {
+    margin: 12px  0px !important;
+}
+
+.MuiPaper-root::before {
+    height: 0px !important;
+}

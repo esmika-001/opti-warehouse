@@ -1,0 +1,28 @@
+.root{
+    background-color:#f6f8ff !important;
+    height:100vh;
+    display:flex;
+    overflow: hidden !important;
+    flex-direction: column;
+}
+.sidebar{
+    transition: .3s all cubic-bezier(0.820, 0.085, 0.395, 0.895) !important;
+    position: relative;
+    width: 315px !important;
+}
+.open{
+    transform: translateX(0) !important;
+}
+
+.closed{
+    transform: translateX(-100%) !important;
+    margin-right: -315px !important;
+}
+.content{
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow: hidden;
+    height: 100%;
+}

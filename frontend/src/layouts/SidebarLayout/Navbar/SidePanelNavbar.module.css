@@ -1,0 +1,95 @@
+.root {
+    min-height: 90px !important;
+    max-height: 90px !important;
+    width: auto !important;
+    max-width: 100% !important;
+    text-align: right;
+    background-color: #fff !important;
+    box-shadow: 0 0 5px  0 rgba(0, 0, 0, 0.1) !important;
+    border-bottom: 0.5px solid rgba(140, 140, 140, 0.2);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left {
+    height: 90px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding-left: 30px !important;
+    box-sizing: border-box !important;
+    font-size: 22px !important;
+    font-family: poppins !important;
+    color: #000 !important;
+    line-height: 33px !important;
+    font-weight: 600 !important;
+}
+
+.right {
+    margin-right: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    /* width:300px; */
+}
+
+.searchBox {
+    margin-left: 30px;
+    background-color: #f6f8ff !important;
+    border-radius: 8px !important;
+    width: 382px !important;
+    height: 44px !important;
+    display: flex;
+}
+
+.searchInput {
+    width: 90%;
+}
+
+.profileBox {
+    display: flex;
+    text-align: right;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.userName {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    line-height: 18px !important;
+
+}
+
+.userTitle {
+    font-size: 9px !important;
+    font-weight: 400 !important;
+    line-height: 13.5px !important;
+}
+
+.userAvatar {
+    margin-left: 20px;
+    height: 43px !important;
+    width: 43px !important;
+}
+
+.dateBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.dateText {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 21px !important;
+    ;
+}
+
+.notificationBox {
+    margin-left: 26px;
+}
