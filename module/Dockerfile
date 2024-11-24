@@ -1,30 +1,43 @@
-ARG PYTHON_VERSION=python:3.11-alpine
+# Base image for Python 3.11 on Alpine
+ARG PYTHON_VERSION=python:3.12-alpine
 FROM $PYTHON_VERSION AS dependency-base
 
+RUN apk update && apk add --no-cache \
+    build-base \
+    gcc \
+    g++ \
+    libc-dev \
+    python3-dev \
+    libffi-dev \
+    musl-dev \
+    meson
+    
 ENV PROJECT_DIR=/app
-# Set the working directory
 WORKDIR $PROJECT_DIR
 
-# Copy requirements.txt
-COPY ./requirements.txt ./
+# Install dependencies for compiling certain packages (e.g., cryptography)
+# RUN apk update && apk add --no-cache gcc musl-dev libffi-dev
 
+# Copy requirements and install Python dependencies
+COPY ./requirements.txt ./
+RUN pip install --upgrade pip
+RUN pip install -r  requirements.txt
+
+# Production image to copy the application code
 FROM dependency-base AS production-base
 
 COPY --chown=python:python . $PROJECT_DIR
 
-# Install dependencies
-# RUN source venv/bin/activate
-
-RUN pip install --no-cache-dir -r requirements.txt
-
+# Final image for running the application
 FROM production-base AS production
 
 USER python
 
+# Copy application code
 COPY --from=production-base $PROJECT_DIR .
 
-# Expose the application port and start the application
+# Expose the port
 EXPOSE 5000
 
-
-CMD ["python", "app.py"]
+# Start the application
+CMD ["python", "app.py"]  # Adjust depending on your actual app start command
