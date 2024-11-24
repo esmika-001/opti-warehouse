@@ -23,6 +23,7 @@ WORKDIR $PROJECT_DIR
 COPY ./requirements.txt ./
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir --only-binary :all: -r requirements.txt
+RUN pip install gunicorn
 
 # Production image to copy the application code
 FROM dependency-base AS production-base
@@ -40,4 +41,4 @@ USER python
 EXPOSE 5000
 
 # Start the application
-CMD ["/usr/local/bin/python3", "app.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]

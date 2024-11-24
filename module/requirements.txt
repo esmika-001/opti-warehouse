@@ -6,6 +6,7 @@ pandas==2.2.3
 pip==24.3.1
 prophet==1.1.6
 scikit-learn==1.5.2
-plotly==5.3.1
 scipy==1.14.1
 streamlit==1.40.1
+plotly==5.15.0  # Or another version compatible with numpy
+gunicorn==20.1.0
