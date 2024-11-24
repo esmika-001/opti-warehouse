@@ -1,17 +1,17 @@
 # Base image for Python 3.11 on Alpine
-ARG PYTHON_VERSION=python:3.12-alpine
+ARG PYTHON_VERSION=python:3.11-slim 
 FROM $PYTHON_VERSION AS dependency-base
 
 RUN apk update && apk add --no-cache \
     build-base \
     gcc \
     g++ \
+    make \
     libc-dev \
-    python3-dev \
-    libffi-dev \
     musl-dev \
-    meson
-    
+    python3-dev \
+    libmagic
+
 ENV PROJECT_DIR=/app
 WORKDIR $PROJECT_DIR
 
@@ -21,7 +21,7 @@ WORKDIR $PROJECT_DIR
 # Copy requirements and install Python dependencies
 COPY ./requirements.txt ./
 RUN pip install --upgrade pip
-RUN pip install -r  requirements.txt
+RUN pip install --no-cache-dir --only-binary :all: -r requirements.txt
 
 # Production image to copy the application code
 FROM dependency-base AS production-base
