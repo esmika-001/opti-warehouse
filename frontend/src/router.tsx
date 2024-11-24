@@ -10,6 +10,9 @@ import Maintaince from "./pages/Error/Maintaince";
 import ForgotPassword from "./pages/forgot-password";
 import ResetPassword from "./pages/reset-password";
 import HomePage from "./pages/home";
+import EcoLabelPage from "./pages/eco-label";
+import QuickPathPage from "./pages/quick-path";
+import InventoryOptimizerPage from "./pages/inventory-optimizer";
 
 function Route(isLogined: true | false) {
   const isOnline = useNetworkStatus();
@@ -58,20 +61,20 @@ function Route(isLogined: true | false) {
             }
           ]
         },
+        {
+          path: "eco-label-verifier",
+          element:<EcoLabelPage/>
+        },
+        {
+          path: "quick-path",
+          element:<QuickPathPage/>
+        },
+        {
+          path: "inventory-optimizer",
+          element:<InventoryOptimizerPage/>
+        }
       ],
     },
-    // {
-    //   path: "/",
-    //   element: isLogined && role === "Admin" ? <SidebarLayout /> : <Navigate to="/auth/login" />,
-    //   children: [
-    //     {
-    //       path: "admin",
-    //       children: [
-
-    //         ],
-    //     },
-    //   ],
-    // },
     {
       path: "*",
       element: <BaseLayout children={<Error />}/>,

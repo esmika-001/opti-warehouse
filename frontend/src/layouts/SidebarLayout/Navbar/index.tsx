@@ -27,14 +27,14 @@ const SidePanelNavbar = (props: propsType) => {
     return (
         <Box className={styles.root}>
             <Box className={styles.left}>
-                <IconButton onClick={() => setOpenDrawer(!openDrawer)} sx={{ p: 1.5, mr: 2 }}>
+                <IconButton onClick={() => setOpenDrawer(!openDrawer)} sx={{ p: 1.5, mr: { sm: 2, xs: 1 } }}>
                     <MenuIcon />
                 </IconButton>
                 {/* <img height={40} width={40} src={logo} alt="logo" className={styles.logo} /> &nbsp; */}
-                OptiWarehouse
+                <Typography fontSize={{ xs: "18px", sm: "22px" }} fontWeight={600} >OptiWarehouse</Typography>
             </Box>
             <Box className={styles.right}>
-                <Box className={styles.dateBox}>
+                <Box className={styles.dateBox} display={{ xs: "none", md: "flex" }}>
                     <img src={calenderSvg} alt='calender' /> &nbsp;
                     <Typography className={styles.dateText}>{getWeekDay()}</Typography>
                 </Box>
@@ -43,7 +43,7 @@ const SidePanelNavbar = (props: propsType) => {
 
                 </Box>
                 <Box className={styles.profileBox}>
-                    <Box className={styles.profileTextBox}>
+                    <Box display={{ xs: "none", sm: "flex" }} className={styles.profileTextBox}>
                         <Typography className={styles.userName}>{user.name}</Typography>
                     </Box>
                     <Avatar

@@ -93,3 +93,18 @@
 .notificationBox {
     margin-left: 26px;
 }
+
+@media screen and (max-width:599px){
+    .profileBox {
+        display: flex;
+        text-align: right;
+        align-items: center;
+        margin-left: 0px;
+    }
+    .right {
+        margin-right: 24px;
+    }
+    .left {
+        padding-left: 20px !important;
+    }
+}

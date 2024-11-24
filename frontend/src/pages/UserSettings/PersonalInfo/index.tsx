@@ -63,10 +63,7 @@ const PersonalInfo = (props: props) => {
 
     return (
         <Box className={styles.root}>
-            <Typography className={styles.title}>
-                General Information
-            </Typography>
-            <Divider />
+            
             <Box className={styles.profileWrap}>
                 <Typography className={styles.ptofileTitle}>Profile Picture</Typography>
                 <Box className={styles.profile}>

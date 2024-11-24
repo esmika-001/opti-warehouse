@@ -20,7 +20,7 @@
 }
 
 .profileWrap {
-    padding: 20px 0 !important;
+    padding: 0 0 20px 0 !important;
 }
 
 .ptofileTitle {
@@ -46,7 +46,7 @@
     display: flex !important;
     flex-direction: column !important;
     margin-left: 13px !important;
-    justify-content: space-between !important;
+    gap: 8px !important;
 }
 
 .name {
@@ -67,7 +67,7 @@
     margin-left: 28px;
     display: flex !important;
     flex-direction: column !important;
-    gap: 16px !important;
+    gap: 8px !important;
 }
 
 .btn1 {

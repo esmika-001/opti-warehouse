@@ -144,3 +144,41 @@
         filter: opacity(0.4) drop-shadow(0 0 0 #4b87ff) !important;
     }
 }
+
+
+
+
+.form {
+    height: min-content !important;
+    width: 100% !important;
+}
+
+.inputBox {
+    border: 1px solid rgba(0, 0, 0, 0.253) !important;
+    border-radius: 8px !important;
+    width: 100% !important;
+    & input {
+        padding: 16px 20px !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        line-height: 24px !important;
+    }
+    & div {
+        padding-left: 20px !important;
+    }
+    & fieldset {
+        border: none !important;
+    }
+}
+
+.inputWraper {
+    padding: 0 0 24px 0 !important;
+}
+
+.formLabel {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 22px !important;
+    color: black !important;
+    margin-bottom: 8px !important;
+}

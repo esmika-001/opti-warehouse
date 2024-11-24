@@ -144,3 +144,11 @@
         filter: opacity(0.4) drop-shadow(0 0 0 #4b87ff) !important;
     }
 }
+
+.formLabel {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 22px !important;
+    color: black !important;
+    margin-bottom: 8px !important;
+}
