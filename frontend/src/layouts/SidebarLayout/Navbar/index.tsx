@@ -30,7 +30,6 @@ const SidePanelNavbar = (props: propsType) => {
                 <IconButton onClick={() => setOpenDrawer(!openDrawer)} sx={{ p: 1.5, mr: { sm: 2, xs: 1 } }}>
                     <MenuIcon />
                 </IconButton>
-                {/* <img height={40} width={40} src={logo} alt="logo" className={styles.logo} /> &nbsp; */}
                 <Typography fontSize={{ xs: "18px", sm: "22px" }} fontWeight={600} >OptiWarehouse</Typography>
             </Box>
             <Box className={styles.right}>

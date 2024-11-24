@@ -26,7 +26,7 @@ const SidePanel = ({ handleLogout }: { handleLogout: Function }) => {
          <PanelButton selected={location.pathname === "/quick-path"} id={3} title={'Quick Path'} image={<RouteIcon />} handleClick={() => { Navigate('/quick-path') }} />
          <PanelButton selected={location.pathname === "/inventory-optimizer"} id={4} title={'Inventory Optimizer'} image={<ShoppingCartIcon />} handleClick={() => { Navigate('/inventory-optimizer') }} />
          <PanelButton selected={location.pathname === "/setting/personal-info"} id={5} title={'Profile Settings'} image={SettingPng} handleClick={() => { Navigate('setting/personal-info') }} />
-         <PanelButton selected={location.pathname === "/setting/security"} title='Security Settings' id={6} image={<SecurityIcon />} handleClick={() => { Navigate('setting/security') }} />
+         {/* <PanelButton selected={location.pathname === "/setting/security"} title='Security Settings' id={6} image={<SecurityIcon />} handleClick={() => { Navigate('setting/security') }} /> */}
          <PanelButton selected={location.pathname === "/logout"} id={7} title={'Log out'} image={LogoutPng} handleClick={() => { handleLogout() }} />
       </Box>
    )

@@ -48,7 +48,7 @@ const SidebarLayout = ({ children }: LayoutProps) => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={() => navigate('/setting')}>Profile</MenuItem>
+        <MenuItem onClick={() => navigate('/setting/personal-info')}>Profile</MenuItem>
         <MenuItem onClick={handleLogout} >Logout</MenuItem>
       </Menu>
       <Box className={styles.content}>

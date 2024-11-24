@@ -1,9 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
 import styles from './UserSettings.module.css'
-// import Bntpng from '../../assets/Images/settingB&t.png'
-// import Ppng from '../../assets/Images/settingP.png'
-// import Lpng from '../../assets/Images/settingL.png'
 import { useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../../hooks'
 

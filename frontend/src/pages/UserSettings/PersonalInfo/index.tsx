@@ -75,8 +75,8 @@ const PersonalInfo = (props: props) => {
                         <Typography className={styles.oth}>{user.username}</Typography>
                     </Box>
                     <Box className={styles.btns}>
-                        <Button className={styles.btn1} onClick={() => document.getElementById('profilePicInput')?.click()}> Change</Button>
-                        <Button className={styles.btn2} onClick={() => deleteImage()}> Delete</Button>
+                        {/* <Button className={styles.btn1} onClick={() => document.getElementById('profilePicInput')?.click()}> Change</Button>
+                        <Button className={styles.btn2} onClick={() => deleteImage()}> Delete</Button> */}
                     </Box>
                 </Box>
             </Box>
