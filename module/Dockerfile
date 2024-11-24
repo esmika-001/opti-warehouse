@@ -1,16 +1,16 @@
 # Base image for Python 3.11 on Alpine
-ARG PYTHON_VERSION=python:3.11-slim 
-FROM $PYTHON_VERSION AS dependency-base
+FROM python:3.11-slim AS dependency-base
 
-RUN apk update && apk add --no-cache \
-    build-base \
+# Install necessary build tools and libraries for compiling pyarrow
+RUN apt-get update && apt-get install -y \
+    build-essential \
     gcc \
     g++ \
     make \
     libc-dev \
-    musl-dev \
     python3-dev \
-    libmagic
+    libmagic-dev
+
 
 ENV PROJECT_DIR=/app
 WORKDIR $PROJECT_DIR
