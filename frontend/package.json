@@ -16,14 +16,13 @@
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.5",
     "notistack": "^3.0.1",
-    "react": " ^18.0.0",
-    "react-dom": " ^18.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-hook-form": "^7.53.0",
     "react-redux": "^9.1.0",
     "react-router": "^6.22.3",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
-    "react-slick": "^0.30.2",
     "redux-persist": "^6.0.0",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
@@ -33,15 +32,16 @@
     "prestart": "npm i",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "dev": "react-scripts start --env=dev",
+    "dev": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-env": "^7.26.0",
+    "@types/react": "^18.3.3"
   },
   "browserslist": {
     "production": [
@@ -54,9 +54,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/antd": "^1.0.0",
-    "@types/react": "^18.3.3"
   }
 }

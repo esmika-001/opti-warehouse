@@ -1,0 +1,29 @@
+#docker network create opti_warehouse_shared_network
+services:
+  # Backend service
+  opti-warehouse-models:
+    container_name: opti-warehouse-models
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dependency-base
+    ports:
+      - ${APP_FORWARD_PORT:-5000}:${APP_PORT:-5000}
+    volumes:
+      - .:/app
+    networks:
+      - opti_warehouse_network
+    restart: on-failure
+    tty: true
+    stdin_open: true
+    expose:
+      - ${APP_PORT:-5000}
+    environment:
+      - PYTHONUNBUFFERED=1
+
+networks:
+  opti_warehouse_network:
+    name: opti_warehouse_shared_network
+    external: true
+
+#docker network create opti_warehouse_shared_network

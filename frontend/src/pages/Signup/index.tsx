@@ -323,6 +323,7 @@ const Signup: React.FC = () => {
               check_username(value);
               setData((pre) => ({ ...pre, username: value }));
             }}
+            placeholder='min 6 characters'
             inputProps={{
               maxLength: 50,
               title: 'No spaces allowed. Only letters, numbers, and special characters are allowed.',

@@ -27,7 +27,7 @@ const UserSettings = () => {
         const resp: any = await dispatch(updateUserAction({ data: data }))
         if (resp.meta.requestStatus === 'fulfilled') {
             showNotification(" Profile Updated", "success");
-            navigate("/setting")
+            navigate("/setting/personal-info");
             // window.location.reload();
         }
         if (resp.meta.requestStatus === 'rejected') {

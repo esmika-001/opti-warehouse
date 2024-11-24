@@ -181,7 +181,6 @@ def simulate_order_cluster():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
 
+CORS(app)
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
-    # Enable CORS for all routes
-    CORS(app)
