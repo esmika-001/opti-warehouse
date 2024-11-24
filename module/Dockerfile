@@ -40,4 +40,4 @@ USER python
 EXPOSE 5000
 
 # Start the application
-CMD ["python", "app.py"]  # Adjust depending on your actual app start command
+CMD ["/usr/local/bin/python3", "app.py"]
