@@ -115,7 +115,6 @@ const EcoLabelPage = () => {
                                         <DemoContainer components={["DatePicker"]} sx={{ mt: "-6px", pl: 0 }}>
                                             <DatePicker
                                                 className={`${styles.inputBoxDate}`}
-                                                disableFuture
                                                 sx={{ width: "100%", p: 0 }}
                                                 value={data.expiry_date ? data.expiry_date : null}
                                                 onChange={(newValue: Dayjs | null) => {
