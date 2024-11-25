@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from 'react'
-import { Box, Menu, MenuItem, useMediaQuery } from '@mui/material'
+import { Box, Drawer, Menu, MenuItem, useMediaQuery } from '@mui/material'
 import { Outlet, useNavigate } from 'react-router';
 import SidePanel from './SidePanel/SidePanel';
 import SidePanelNavbar from './Navbar';
@@ -16,6 +16,7 @@ const SidebarLayout = ({ children }: LayoutProps) => {
   const [menuAnchorRef, setMenuAnchorRef] = useState<HTMLElement | null>(null)
   const [openDrawer, setOpenDrawer] = useState<boolean>(true)
   const isTablet = useMediaQuery('(max-width: 1024px)')
+  const isMobile = useMediaQuery('(max-width: 600px)')
   const open = Boolean(menuAnchorRef);
   const handleClickAvatar = (event: React.MouseEvent<HTMLButtonElement>) => {
     setMenuAnchorRef(event.currentTarget);
@@ -28,14 +29,14 @@ const SidebarLayout = ({ children }: LayoutProps) => {
     dispatch(logout())
   }
 
-  useEffect(()=>{
-    if(isTablet){
+  useEffect(() => {
+    if (isTablet) {
       setOpenDrawer(false)
-    }else{
+    } else {
       setOpenDrawer(true)
     }
-  },[isTablet])
-  
+  }, [isTablet])
+
   return (
     <Box className={styles.root} sx={{}}>
       <SidePanelNavbar handleClickAvatar={handleClickAvatar} setOpenDrawer={setOpenDrawer} openDrawer={openDrawer} />
@@ -52,9 +53,15 @@ const SidebarLayout = ({ children }: LayoutProps) => {
         <MenuItem onClick={handleLogout} >Logout</MenuItem>
       </Menu>
       <Box className={styles.content}>
-        <Box className={`${openDrawer ? styles.open : styles.closed} ${styles.sidebar}`}>
-          <SidePanel handleLogout={handleLogout}  />
-        </Box>
+        {!isMobile ?
+          <Box className={`${openDrawer ? styles.open : styles.closed} ${styles.sidebar}`}>
+            <SidePanel handleLogout={handleLogout} />
+          </Box>
+          :
+          <Drawer open={openDrawer} variant='temporary' onClose={() => setOpenDrawer(false)}>
+            <SidePanel handleCloseMobileDrawer={() => isMobile && setOpenDrawer(false)} handleLogout={handleLogout} />
+          </Drawer>
+        }
         {children || <Outlet />}
       </Box>
     </Box>

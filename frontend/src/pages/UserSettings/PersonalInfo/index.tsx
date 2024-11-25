@@ -63,7 +63,7 @@ const PersonalInfo = (props: props) => {
 
     return (
         <Box className={styles.root}>
-            
+
             <Box className={styles.profileWrap}>
                 <Typography className={styles.ptofileTitle}>Profile Picture</Typography>
                 <Box className={styles.profile}>
@@ -81,7 +81,7 @@ const PersonalInfo = (props: props) => {
                 </Box>
             </Box>
             <Box className={styles.form}>
-                <Grid container columns={12} columnSpacing={4} >
+                <Grid container columns={12} columnSpacing={4} direction={{ xs: "column", sm: "row" }}  >
                     <Grid item xs={6}>
                         <Grid item xs={12} className={styles.inputWraper}>
                             <FormGroup>

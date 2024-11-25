@@ -121,7 +121,7 @@ const QuickPathPage = () => {
                                     series={[{ data: result.map((d: any) => (d[1])) }]} // data should be an array of arrays
                                     height={290}
                                     xAxis={[{ data: result.map((d: any) => String(d[0])), scaleType: 'band' }]}
-                                    margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
+                                    margin={{ top: 10, bottom: 30, left: 55, right: 10 }}
                                 />
                             </Stack>
                         }

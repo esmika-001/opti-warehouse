@@ -40,7 +40,7 @@ const UserSettings = () => {
             <Box className={styles.heading}>
                 <Box className={styles.headings}>
                     <Typography className={styles.heading1}>Profile Settings</Typography>
-                    <Typography className={styles.heading2}>Manage your account settings</Typography>
+                    <Typography className={styles.heading2}>Manage your Profile Settings</Typography>
                 </Box>
                 <Box className={styles.headingBtns} >
                     <Button onClick={() => { handleSave() }} className={`${styles.saveBtn} ${styles.headingBtn}`}>Save Changes</Button>

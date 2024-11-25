@@ -46,6 +46,8 @@
     align-items: center !important;
     justify-content: flex-end !important ;
     height:100% !important; 
+    flex-wrap: wrap !important;
+    margin-right: 10px !important;
 }
 .headingBtn{
     border-radius: 12px !important;
@@ -58,15 +60,12 @@
 .saveBtn{
     background-color: #4f80e1 !important;
     color: white !important;
-    margin-right: 10px !important;
 }
 .cancleBtn{
     background-color: #f6f8ff !important;
     color:#4f80e1 !important;
     border: 1px solid #4f80e1 !important;
-    margin-right: 22px !important;
     margin-left: 10px !important;
-
 }
 
 /* main */
@@ -89,7 +88,7 @@
     align-items: flex-start !important;
     background-color: white !important;
     overflow: hidden !important;
-    /* overflow-y: auto !important; */
+    overflow-y: auto !important;
 }
 .sideBar{
     height: 100% !important;
@@ -105,7 +104,7 @@
     height: 100% !important;
     box-sizing: border-box !important;
     width: 100%  !important;
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
 }
 .divider{
     margin: 0 33px !important;
@@ -142,5 +141,11 @@
     }
     & .iconWrapper{
         filter: opacity(0.4) drop-shadow(0 0 0 #4b87ff) !important;
+    }
+}
+
+@media screen and (max-width:599px){
+    .heading{
+        min-height: 160px !important;
     }
 }
